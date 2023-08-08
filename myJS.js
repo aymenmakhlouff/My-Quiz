@@ -233,7 +233,7 @@ $(".butRad").prop('checked', false)
 
 index++
 indexQ++
-        
+alert("Your score is "+result+" pts.")   
     })
     $("#nxt").hide()
 }
@@ -277,7 +277,8 @@ if(index === 4 && indexQ === 5){
 $(".geo-butRad").prop('checked', false)
 
 index++
-indexQ++      
+indexQ++   
+alert("Your score is "+result+" pts.")   
     })
     $("#geo-nxt").hide()
 }
@@ -323,14 +324,15 @@ $(".sc-butRad:checked").prop('checked', false)
 
 index++
 indexQ++
+alert("Your score is "+result+" pts.")
     })
     $("#sc-nxt").hide()
 }
 })
 //////////////////////////////////////////////////////////////////////////////////////
    
-    $("#title-res").text(storeUser+", you are finished your test.")
-    $("#score").text("You have "+ result+" pts.")
+    $("#title-res").text("You are finished your test. Press play again to re-play")
+    
    
     //reset and re-game 
 $("#reset").on("click",function(){
