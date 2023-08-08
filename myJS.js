@@ -160,6 +160,7 @@ var scienceQuiz = [
     }
 ]
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// store the user name and show an alert
 var storeUser = ""
 $ ("#start").on("click",function(){
     storeUser = $("#userName").val()
@@ -168,6 +169,7 @@ $ ("#start").on("click",function(){
 })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//to make the first questions and answers and hide the submit button to show her later
 
 $("#question").text(sportQuiz[0].question)
 $("#label-answ1").text(sportQuiz[0].answers.a)
@@ -188,15 +190,14 @@ $("#label-sc-answ3").text(scienceQuiz[0].answers.c)
 $("#sc-sub").hide()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var indexQ = 1
-var index = 0
-var result = 0
+var indexQ = 1 //to loop for questions and result
+var index = 0 //to loop for true answers
+var result = 0 //to store result
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SPORT
-
+// this button to affiche questions with his answers by looping in data , calculat the result of pts by showing a message of each action 
 $("#nxt").on("click",function(){    
-    console.log("this is nxt")
 $("#question").text(sportQuiz[indexQ].question)
 $("#label-answ1").text(sportQuiz[indexQ].answers.a)
 $("#label-answ2").text(sportQuiz[indexQ].answers.b)
@@ -215,7 +216,7 @@ $(".butRad").prop('checked', false)
 
 index++
 indexQ++
-    
+  //show the submit button and hide the next button at last question, and make the submit button to calculat resulte also  
 if(index === 4 && indexQ === 5){
     $("#sub").show().on("click",function(){
         var radioValue = $(".butRad:checked").val();
@@ -240,6 +241,8 @@ indexQ++
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // geography
+
+// this button to affiche questions with his answers by looping in data , calculat the result of pts by showing a message of each action 
 $("#geo-nxt").on("click",function(){    
 $("#geo-question").text(geographyQuiz[indexQ].question)
 $("#label-geo-answ1").text(geographyQuiz[indexQ].answers.a)
@@ -258,6 +261,8 @@ $(".geo-butRad").prop('checked', false)
 
 index++
 indexQ++
+
+//show the submit button and hide the next button at last question, and make the submit button to calculat resulte also  
 if(index === 4 && indexQ === 5){
     $("#geo-sub").show().on("click",function(){
         var radioValue = $(".geo-butRad:checked").val();
@@ -272,8 +277,7 @@ if(index === 4 && indexQ === 5){
 $(".geo-butRad").prop('checked', false)
 
 index++
-indexQ++
-        
+indexQ++      
     })
     $("#geo-nxt").hide()
 }
@@ -281,9 +285,8 @@ indexQ++
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SCIENCE
 
-
-$("#sc-nxt").on("click",function(){    
-    
+// this button to affiche questions with his answers by looping in data , calculat the result of pts by showing a message of each action 
+$("#sc-nxt").on("click",function(){      
 $("#sc-question").text(scienceQuiz[indexQ].question)
 $("#label-sc-answ1").text(scienceQuiz[indexQ].answers.a)
 $("#label-sc-answ2").text(scienceQuiz[indexQ].answers.b)
@@ -302,6 +305,8 @@ $(".sc-butRad:checked").prop('checked', false)
 
 index++
 indexQ++
+
+//show the submit button and hide the next button at last question, and make the submit button to calculat resulte also  
 if(index === 4 && indexQ === 5){
     $("#sc-sub").show().on("click",function(){
         var radioValue = $(".sc-butRad:checked").val();
@@ -318,16 +323,16 @@ $(".sc-butRad:checked").prop('checked', false)
 
 index++
 indexQ++
-        
-
     })
     $("#sc-nxt").hide()
 }
 })
 //////////////////////////////////////////////////////////////////////////////////////
+   
     $("#title-res").text(storeUser+", you are finished your test.")
     $("#score").text("You have "+ result+" pts.")
-    
+   
+    //reset and re-game 
 $("#reset").on("click",function(){
 indexQ = 1
 index = 0
