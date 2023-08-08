@@ -10,23 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<div>
-    <h1 id="question"></h1><br>
-    <span>
-    <input type="radio" id="answ1" class="butRad" name="answer" value="a">
-    <label for="answ1" id="label-answ1" ></label>
-</span><br>
-<span>
-    <input type="radio" id="answ2" class="butRad" name="answer" value="b">
-<label for="answ2" id="label-answ2" ></label>
-</span> <br>  
-<span> 
-    <input type="radio" id="answ3" class="butRad" name="answer" value="c">
-    <label for="answ3" id="label-answ3" ></label>
-</span><br> 
-    <button id="nxt" >Next</button>
-</div>
+
 <body>
+    <div class="qa">
+        <h1 id="question"></h1>
+        <div class="check">
+                <span>
+        <input type="radio" id="answ1" class="butRad" name="answer" value="a">
+        <label for="answ1" id="label-answ1" ></label>
+    </span>
+    <span>
+        <input type="radio" id="answ2" class="butRad" name="answer" value="b">
+    <label for="answ2" id="label-answ2" ></label>
+    </span> 
+    <span> 
+        <input type="radio" id="answ3" class="butRad" name="answer" value="c">
+        <label for="answ3" id="label-answ3" ></label>
+    </span>
+        </div>
+        <button id="nxt" >Next</button>
+        <a href="result.html"><button id="sub" >Submit</button></a>
+    </div>
     <script src="myJS.js"></script>
 </body>
 </html>

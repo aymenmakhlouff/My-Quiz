@@ -43,24 +43,15 @@ var sportQuiz = [
             c: "a fault"
         },
         trueAnswer:"c"
-    },
-    {
-        question: "Q5: In tennis, a serve that goes out or doesn't get over the net is called",
-        answers: {
-            a: "an ace",
-            b: "a let",
-            c: "a fault"
-        },
-        trueAnswer:"c"
-    },
+    }
 ]
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var geographyQuiz = [
     {
         question: "Q1: In which country is Mount Everest? ",
         answers: {
-            a: "",
-            b: "",
+            a: "Thailande",
+            b: "Philippines",
             c: "Nepal"
         },
         trueAnswer:"c"
@@ -69,16 +60,16 @@ var geographyQuiz = [
         question: "Q2: Which continent has the biggest population? ",
         answers: {
             a: "Asia",
-            b: "",
-            c: ""
+            b: "Africa",
+            c: "USA"
         },
         trueAnswer:"a"
     },
     {
         question: "Q3: What is the capital city of New Zealand? ",
         answers: {
-            a: "",
-            b: "",
+            a: "Yamoussoukro",
+            b: "Juba",
             c: "Wellington"
         },
         trueAnswer:"c"
@@ -86,38 +77,47 @@ var geographyQuiz = [
     {
         question: "Q4: On which continent is the Sahara desert? ",
         answers: {
-            a: "",
+            a: "Asia",
             b: "Africa",
-            c: ""
+            c: "USA"
         },
         trueAnswer:"b"
     },
     {
         question: "Q5: Name the two longest rivers in the world.",
         answers: {
-            a: "",
-            b: "",
+            a: "Amazon/Mississippi",
+            b: "Nile/Yangtze",
             c: "Amazon/Nile"
         },
         trueAnswer:"c"
     },
+    {
+        question: "Q5: Name the two longest rivers in the world.",
+        answers: {
+            a: "Amazon/Mississippi",
+            b: "Nile/Yangtze",
+            c: "Amazon/Nile"
+        },
+        trueAnswer:"c"
+    }
 ]
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var scienceQuiz = [
     {
         question: "Q1: Which planet is the fifth from the sun? ",
         answers: {
-            a: "",
+            a: "Venus",
             b: "Jupiter",
-            c: ""
+            c: "Saturn"
         },
         trueAnswer:"b"
     },
     {
         question: "Q2: Who developed the theory of relativity? ",
         answers: {
-            a: "",
-            b: "",
+            a: "Isaac Newton",
+            b: "Galileo",
             c: "Albert Einstein"
         },
         trueAnswer:"c"
@@ -125,9 +125,9 @@ var scienceQuiz = [
     {
         question: "Q3: Which chemical element is represented by the symbol N ",
         answers: {
-            a: "",
+            a: "Neon",
             b: "Nitrogen",
-            c: ""
+            c: "Nickel"
         },
         trueAnswer:"b"
     },
@@ -135,8 +135,8 @@ var scienceQuiz = [
         question: "Q4: In which organelle of a living cell is DNA found? ",
         answers: {
             a: "Nucleus",
-            b: "",
-            c: ""
+            b: "Mitochondria",
+            c: "Cell Membrane"
         },
         trueAnswer:"a"
     },
@@ -149,26 +149,22 @@ var scienceQuiz = [
         },
         trueAnswer:"a"
     },
+    {
+        question: "Q5: Which travel faster, light or sound waves?",
+        answers: {
+            a: "Light waves",
+            b: "Sound waves",
+            c: "Both of them"
+        },
+        trueAnswer:"a"
+    }
 ]
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var count = 65
-var storeUser = ["YoUrNaMe@"]
+var storeUser = ""
 $ ("#start").on("click",function(){
-   count += 3
-    var inputVal = $("#userName").val()
-        for(var i = 0 ; i<storeUser.length ; i++ ){
-        }
-        if( inputVal !== storeUser[i] || storeUser === []){
-            storeUser.push(inputVal)
-            alert ("You register successfully with : " + inputVal)
-        }
-        if(inputVal === storeUser[i]){
-                inputVal = inputVal + count
-                storeUser.push(inputVal)
-                alert("Your user name is taked befor, you are registred with " + inputVal )
-                   
-        }
- 
+    storeUser = $("#userName").val()
+    
+    alert("Welcome to the quiz, "+storeUser)
 })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -177,26 +173,28 @@ $("#question").text(sportQuiz[0].question)
 $("#label-answ1").text(sportQuiz[0].answers.a)
 $("#label-answ2").text(sportQuiz[0].answers.b)
 $("#label-answ3").text(sportQuiz[0].answers.c)
+$("#sub").hide()
 
-
-
-    $("#question").text(geographyQuiz[0].question)
+$("#geo-question").text(geographyQuiz[0].question)
 $("#label-geo-answ1").text(geographyQuiz[0].answers.a)
 $("#label-geo-answ2").text(geographyQuiz[0].answers.b)
 $("#label-geo-answ3").text(geographyQuiz[0].answers.c)
+$("#geo-sub").hide()
 
-
-
-  
-    $("#question").text(scienceQuiz[0].question)
+$("#sc-question").text(scienceQuiz[0].question)
 $("#label-sc-answ1").text(scienceQuiz[0].answers.a)
 $("#label-sc-answ2").text(scienceQuiz[0].answers.b)
 $("#label-sc-answ3").text(scienceQuiz[0].answers.c)
+$("#sc-sub").hide()
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var indexQ = 1
 var index = 0
 var result = 0
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SPORT
+
 $("#nxt").on("click",function(){    
     console.log("this is nxt")
 $("#question").text(sportQuiz[indexQ].question)
@@ -210,18 +208,130 @@ $("#label-answ3").text(sportQuiz[indexQ].answers.c)
         }
         if(radioValue !== sportQuiz[index].trueAnswer){
             result -= 3
+            
             alert("Wrong answer! you lost 3 pts")
         }
-$("#answ1").prop('checked', false)
-$("#answ2").prop('checked', false)
-$("#answ3").prop('checked', false)
+$(".butRad").prop('checked', false)
+
 index++
 indexQ++
+    
+if(index === 4 && indexQ === 5){
+    $("#sub").show().on("click",function(){
+        var radioValue = $(".butRad:checked").val();
+        if(radioValue === sportQuiz[index].trueAnswer){
+            result += 5
+            alert("Good answer! you win 5 pts");
+        }
+        if(radioValue !== sportQuiz[index].trueAnswer){
+            result -= 3
+            
+            alert("Wrong answer! you lost 3 pts")
+        }
+$(".butRad").prop('checked', false)
+
+index++
+indexQ++
+        
+    })
+    $("#nxt").hide()
+}
 })
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// geography
+$("#geo-nxt").on("click",function(){    
+$("#geo-question").text(geographyQuiz[indexQ].question)
+$("#label-geo-answ1").text(geographyQuiz[indexQ].answers.a)
+$("#label-geo-answ2").text(geographyQuiz[indexQ].answers.b)
+$("#label-geo-answ3").text(geographyQuiz[indexQ].answers.c)
+        var radioValue = $(".geo-butRad:checked").val();
+        if(radioValue === geographyQuiz[index].trueAnswer){
+            result += 5
+            alert("Good answer! you win 5 pts");
+        }
+        if(radioValue !== geographyQuiz[index].trueAnswer){
+            result -= 3
+            alert("Wrong answer! you lost 3 pts")
+        }
+$(".geo-butRad").prop('checked', false)
+
+index++
+indexQ++
+if(index === 4 && indexQ === 5){
+    $("#geo-sub").show().on("click",function(){
+        var radioValue = $(".geo-butRad:checked").val();
+        if(radioValue === geographyQuiz[index].trueAnswer){
+            result += 5
+            alert("Good answer! you win 5 pts");
+        }
+        if(radioValue !== geographyQuiz[index].trueAnswer){
+            result -= 3
+            alert("Wrong answer! you lost 3 pts")
+        }
+$(".geo-butRad").prop('checked', false)
+
+index++
+indexQ++
+        
+    })
+    $("#geo-nxt").hide()
+}
+})
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SCIENCE
 
 
+$("#sc-nxt").on("click",function(){    
+    
+$("#sc-question").text(scienceQuiz[indexQ].question)
+$("#label-sc-answ1").text(scienceQuiz[indexQ].answers.a)
+$("#label-sc-answ2").text(scienceQuiz[indexQ].answers.b)
+$("#label-sc-answ3").text(scienceQuiz[indexQ].answers.c)
+        var radioValue = $(".sc-butRad:checked").val();
+        if(radioValue === scienceQuiz[index].trueAnswer){
+            result += 5
+            alert("Good answer! you win 5 pts");
+        }
+        if(radioValue !== scienceQuiz[index].trueAnswer){
+            result -= 3
+            alert("Wrong answer! you lost 3 pts")
+        }
 
+$(".sc-butRad:checked").prop('checked', false)
 
+index++
+indexQ++
+if(index === 4 && indexQ === 5){
+    $("#sc-sub").show().on("click",function(){
+        var radioValue = $(".sc-butRad:checked").val();
+        if(radioValue === scienceQuiz[index].trueAnswer){
+            result += 5
+            alert("Good answer! you win 5 pts");
+        }
+        if(radioValue !== scienceQuiz[index].trueAnswer){
+            result -= 3
+            alert("Wrong answer! you lost 3 pts")
+        }
 
+$(".sc-butRad:checked").prop('checked', false)
+
+index++
+indexQ++
+        
+
+    })
+    $("#sc-nxt").hide()
+}
+})
+//////////////////////////////////////////////////////////////////////////////////////
+    $("#title-res").text(storeUser+", you are finished your test.")
+    $("#score").text("You have "+ result+" pts.")
+    
+$("#reset").on("click",function(){
+indexQ = 1
+index = 0
+result = 0
+})
 
 
